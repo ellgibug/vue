@@ -16,7 +16,7 @@ class CreateRecordsTable extends Migration
         Schema::create('records', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 50);
-            $table->string('phone', 12);
+            $table->string('phone', 20);
             $table->enum('status', ['received', 'processing', 'completed', 'deleted'])->default('received');
             $table->string('description', 255)->nullable();
             $table->timestamps();

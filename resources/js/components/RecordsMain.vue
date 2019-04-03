@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-default">
-                    <div class="card-header">Records</div>
+                <div class="card mb-5">
+                    <div class="card-header text-white bg-success">Records</div>
 
                     <div class="card-body">
                         <router-view></router-view>

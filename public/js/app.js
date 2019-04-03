@@ -1771,13 +1771,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'app-header'
 });
@@ -37060,10 +37053,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "nav",
-    {
-      staticClass: "navbar navbar-expand-md navbar-light navbar-laravel",
-      staticStyle: { "margin-bottom": "50px" }
-    },
+    { staticClass: "navbar navbar-expand-lg navbar-light bg-success mb-5" },
     [
       _c(
         "div",
@@ -37073,52 +37063,14 @@ var render = function() {
             "router-link",
             { staticClass: "navbar-brand", attrs: { to: "/v1" } },
             [_vm._v("List of records")]
-          ),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._m(1)
+          )
         ],
         1
       )
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "navbar-toggler",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarSupportedContent",
-          "aria-controls": "navbarSupportedContent",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }
-      },
-      [_c("span", { staticClass: "navbar-toggler-icon" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "collapse navbar-collapse",
-        attrs: { id: "navbarSupportedContent" }
-      },
-      [_c("ul", { staticClass: "navbar-nav ml-auto" })]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -37474,8 +37426,10 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v("Records")]),
+        _c("div", { staticClass: "card mb-5" }, [
+          _c("div", { staticClass: "card-header text-white bg-success" }, [
+            _vm._v("Records")
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [_c("router-view")], 1)
         ])
