@@ -22,7 +22,3 @@ Route::post('v1/request', 'RecordController@store');// store record
 Route::get('v1/{id}/edit', 'RecordController@edit'); // edit record
 Route::match(['put','patch'],'v1/{id}', 'RecordController@update');// update record
 Route::delete('v1/{id}', 'RecordController@destroy');// delete record
-
-//Route::get('/records', 'RecordController@index');
-//Route::get('/records/{id}', 'RecordController@show');
-//Route::post('/records/new', 'RecordController@store');
