@@ -86,7 +86,9 @@
         computed: {
             records() {
                 return this.$store.getters.records;
-            },
+            }
+        },
+        methods:{
             update() {
                 axios.patch(`/api/v1/${this.$route.params.id}`, this.$data.record)
                     .then((response) => {

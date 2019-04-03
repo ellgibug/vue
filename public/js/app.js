@@ -1904,7 +1904,9 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     records: function records() {
       return this.$store.getters.records;
-    },
+    }
+  },
+  methods: {
     update: function update() {
       var _this2 = this;
 
