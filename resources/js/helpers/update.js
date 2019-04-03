@@ -1,6 +1,6 @@
 export function update(record) {
     return new Promise((res, rej) => {
-        axios.get('/api/records', record)
+        axios.get('/api/v1', record)
             .then((response) => {
                 res(response.data)
             })

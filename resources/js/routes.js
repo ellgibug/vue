@@ -1,21 +1,10 @@
-import Home from './components/Home';
-import EditRecord from './components/EditRecord';
 import RecordsMain from './components/RecordsMain';
 import RecordsList from './components/RecordsList';
-import NewRecord from './components/NewRecord';
 import RecordUpdate from './components/RecordUpdate';
 
 export const routes = [
     {
-        path: '/',
-        component: Home,
-    },
-    {
-        path: '/update',
-        component: EditRecord
-    },
-    {
-        path: '/records',
+        path: '/v1',
         component: RecordsMain,
         children:[
             {
@@ -23,13 +12,9 @@ export const routes = [
                 component: RecordsList
             },
             {
-                path: 'new',
-                component: NewRecord
-            },
-            {
-                path: ':id',
+                path: ':id/edit',
                 component: RecordUpdate
-            }
+            },
         ]
     }
 ];

@@ -1,8 +1,5 @@
 <template>
     <div>
-        <div class="btn-wrapper">
-            <router-link to="/records/new" class="btn btn-primary btn-sm">New</router-link>
-        </div>
         <table class="table">
             <thead>
                 <th>Name</th>
@@ -13,7 +10,7 @@
             </thead>
             <tbody>
                 <template v-if="!records.length">
-                    <tr colspan="5" class="text-center">No record available</tr>
+                    <tr colspan="5" class="text-center">No records available</tr>
                 </template>
                 <template v-else>
                     <tr v-for="record in records" :key="record.id">
@@ -22,8 +19,7 @@
                         <td>{{ record.created_at}}</td>
                         <td>{{ record.status}}</td>
                         <td>
-                            <!--<router-link :to="/record/${record.id}">View</router-link>-->
-                            <router-link :to="`/records/${record.id}`">View</router-link>
+                            <router-link :to="`/v1/${record.id}/edit`">Edit</router-link>
                         </td>
                     </tr>
                 </template>
@@ -36,6 +32,9 @@
     export default {
         name: "RecordsList",
         mounted(){
+            if (this.records.length) {
+                return;
+            }
             this.$store.dispatch('getRecords');
         },
         computed:{

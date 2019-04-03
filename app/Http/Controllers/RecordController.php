@@ -38,12 +38,24 @@ class RecordController extends Controller
      */
     public function store(Request $request)
     {
-        $record = Record::create($request->only(['name', 'phone']));
-
-        return response()->json([
-            "record" => $record
-        ], 200);
-
+        $received_record = $request->all();
+        if(isset($received_record['data']['type']) && $received_record['data']['type'] == 'request'){
+            if(isset($received_record['data']['attributes']['name']) && isset($received_record['data']['attributes']['phone'])){
+                $record = new Record();
+                $record->name = $received_record['data']['attributes']['name'];
+                $record->phone = $received_record['data']['attributes']['phone'];
+                $record->saveOrFail();
+                return response()->json([
+                    "record_id" => $record->id
+                ], 201);
+            } else {
+                return response()->json([
+                ], 500);
+            }
+        } else {
+            return response()->json([
+            ], 500);
+        }
     }
 
     /**
@@ -74,22 +86,34 @@ class RecordController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Record  $record
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Record $record)
+    public function update(Request $request, $id)
     {
-        //
+        $record = Record::findOrFail($id);
+
+        $record->status = $request->status;
+        $record->description = $request->description;
+        $record->saveOrFail();
+
+        return response()->json([
+            "record" => $record
+        ], 200);
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Record  $record
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Record $record)
+    public function destroy($id)
     {
-        //
+        $record = Record::findOrFail($id);
+        $record->delete();
+
+        return response()->json([
+
+        ], 200);
     }
 }
