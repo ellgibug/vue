@@ -1893,16 +1893,19 @@ __webpack_require__.r(__webpack_exports__);
       record: {
         status: '',
         description: '',
-        csrf: 'BOxHYbQnVzFJnAaApoBa3aGwa3sckgsE2nb5NZ14'
+        csrf: ''
       },
       errors: null
     };
+  },
+  mounted: function mounted() {
+    this.csrf = $('meta[name="csrf-token"]').attr('content');
   },
   computed: {
     records: function records() {
       return this.$store.getters.records;
     },
-    update2: function update2() {
+    update: function update() {
       var _this2 = this;
 
       axios.patch("/api/v1/".concat(this.$route.params.id), this.$data.record).then(function (response) {
@@ -37134,7 +37137,7 @@ var render = function() {
               on: {
                 submit: function($event) {
                   $event.preventDefault()
-                  return _vm.update2($event)
+                  return _vm.update($event)
                 }
               }
             },

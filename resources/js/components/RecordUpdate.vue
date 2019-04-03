@@ -1,7 +1,7 @@
 <template>
     <div v-if="record">
         <div class="user-info">
-            <form @submit.prevent="update2">
+            <form @submit.prevent="update">
                 <table class="table">
                     <tr>
                         <th>ID</th>
@@ -75,16 +75,19 @@
                 record: {
                     status: '',
                     description: '',
-                    csrf: 'BOxHYbQnVzFJnAaApoBa3aGwa3sckgsE2nb5NZ14',
+                    csrf: '',
                 },
                 errors: null
             };
+        },
+        mounted() {
+            this.csrf = $('meta[name="csrf-token"]').attr('content');
         },
         computed: {
             records() {
                 return this.$store.getters.records;
             },
-            update2() {
+            update() {
                 axios.patch(`/api/v1/${this.$route.params.id}`, this.$data.record)
                     .then((response) => {
                         this.$router.push('/v1');
